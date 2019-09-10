@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nr: 1
+  name: MyString
+  code: MyString
+  city: MyString
+  oceaninsightscode: MyString
+  latitude: 1
+  longitude: 1
+  bigschedules: MyString
+  createdat: 2019-09-11 01:15:14
+  updatedat: 2019-09-11 01:15:14
+  porttype: MyString
+  hubport: false
+  oceaninsights: MyString
+
+two:
+  nr: 1
+  name: MyString
+  code: MyString
+  city: MyString
+  oceaninsightscode: MyString
+  latitude: 1
+  longitude: 1
+  bigschedules: MyString
+  createdat: 2019-09-11 01:15:14
+  updatedat: 2019-09-11 01:15:14
+  porttype: MyString
+  hubport: false
+  oceaninsights: MyString
