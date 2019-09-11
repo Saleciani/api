@@ -1,0 +1,3 @@
+rails g model lookup content:text port:references user:references 
+
+rails g model port nr:integer name:string code:string city:string oceaninsightscode:string latitude:integer longitude:integer bigschedules:string createdat:datetime updatedat:datetime porttype:string hubport:boolean oceaninsights:string user:references
