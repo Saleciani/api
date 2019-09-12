@@ -1,3 +1,7 @@
+puts "Wiping DB clean..."
+
+Port.delete_all
+
 # frozen_string_literal: true
 Port.create(
   nr: 4746,

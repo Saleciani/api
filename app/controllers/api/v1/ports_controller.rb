@@ -1,5 +1,5 @@
-# frozen_string_literal: true
-
+require 'csv'
+require 'json'
 module Api
   module V1
     class PortsController < ApplicationController
@@ -14,19 +14,18 @@ module Api
       end
 
       def create
-        ports = Port.new(ports_params)
-          port.save
-          render json: { status: 'SUCCESS', message: 'Saved article', data: article }, status: :ok
-
+          #data = File.open("http://localhost:3000/api/v1/ports").read
+          #parsed = CSV.parse(data).to_json   
+          ports = Port.new(ports_params)
+          ports.save
+          render json: { status: 'SUCCESS', message: 'Saved csv', data: ports }, status: :ok
       end
 
       def destroy
-        article = Article.find(params[:id])
-        article.destroy
-        render json: { status: 'SUCCESS', message: 'Deleted article', data: article }, status: :ok
+        ports = Port.find(params[:id])
+        ports.destroy
+        render json: { status: 'SUCCESS', message: 'Deleted article', data: ports }, status: :ok
       end
-
-
 
       private
 
