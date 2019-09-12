@@ -1,3 +1,10 @@
 rails g model lookup content:text port:references user:references 
 
 rails g model port nr:integer name:string code:string city:string oceaninsightscode:string latitude:integer longitude:integer bigschedules:string createdat:datetime updatedat:datetime porttype:string hubport:boolean oceaninsights:string user:references
+
+Fazer procura por nome, etc - NOT
+IMportar os portos  - ok
+cConverter csv em normal - NOT
+autenticar - NOT
+nao guardar na base de dados a import depois - NOTy
+apagar depois da importacao 
