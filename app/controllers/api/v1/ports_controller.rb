@@ -11,41 +11,27 @@ module Api
 
       def show
         ports = Port.find(params[:id])
-
         render json: { status: 'SUCCESS', message: 'Loaded Portfound', data: ports }, status: :ok
       end
 
       def create
-      # ports = Port.new(ports_params)
-      # if ports.save
-      #   render json: { status: 'SUCCESS', message: 'Saved csv', data: ports }, status: :ok
-      # else
-      #   render json: @port.errors, status: :unprocessable_entity
-      # end
         file = ports_params[:port].tempfile.path
         CSV.foreach(file) do |row|
-         id, name, code, city, ocean_insights_code, latitude, longitude, bigschedules, created_at, updated_at, port_type, hub_port, ocean_insights = row    
-         @ports = Port.create(name: name,
-          code: code,
-          city: city,
-          oceaninsightscode: ocean_insights_code,
-          latitude: latitude,
-          longitude: longitude,
-          bigschedules: bigschedules,
-          createdat: created_at,
-          updatedat: updated_at,
-          porttype: port_type,
-          hubport: hub_port,
-          oceaninsights: ocean_insights)
-         
+          id, name, code, city, ocean_insights_code, latitude, longitude, bigschedules, created_at, updated_at, port_type, hub_port, ocean_insights = row
+          @ports = Port.create(name: name,
+                               code: code,
+                               city: city,
+                               oceaninsightscode: ocean_insights_code,
+                               latitude: latitude,
+                               longitude: longitude,
+                               bigschedules: bigschedules,
+                               createdat: created_at,
+                               updatedat: updated_at,
+                               porttype: port_type,
+                               hubport: hub_port,
+                               oceaninsights: ocean_insights)
         end
-      render json: { status: 'SUCCESS', message: 'Saved csv', data: @ports  }, status: :ok
-      end
-
-      def destroy
-        ports = Port.find(params[:id])
-        ports.destroy
-        render json: { status: 'SUCCESS', message: 'Deleted article', data: ports }, status: :ok
+        render json: { status: 'SUCCESS', message: 'Saved csv', data: @ports }, status: :ok
       end
 
       private
@@ -63,8 +49,7 @@ module Api
                       :porttype,
                       :hubport,
                       :oceaninsights,
-                      :port,
-                      )
+                      :port)
       end
     end
   end
