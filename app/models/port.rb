@@ -1,9 +1,14 @@
+# frozen_string_literal: true
 class Port < ApplicationRecord
-    require 'csv'
-    
-    def self.import(file)
-        CSV.foreach (file.path, headers:true) do |row|
-            Port.create! row.to_hash
-        end
-    end
+require 'csv'
+#require 'activerecord-import/base'
+#require 'activerecord-import/active_record/adapters/oistgresql_adapter'
+
+# def self.my_import(file)
+   # imp = []
+   # CSV.foreach(tempfile.path, headers: true) do |row|
+   #     imp << Port.new(row.to_h)
+  #  end
+ #   Port.create imp, recursive: true
+#end
 end

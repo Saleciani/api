@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class PortsController < ApplicationController
+      require 'csv'
       def index
         ports = Port.all
         render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
@@ -8,19 +11,35 @@ module Api
 
       def show
         ports = Port.find(params[:id])
+
         render json: { status: 'SUCCESS', message: 'Loaded Portfound', data: ports }, status: :ok
       end
 
-      def import
-        Port.import(params[:file])
-      end
-      
       def create
-          #data = File.open("http://localhost:3000/api/v1/ports").read
-          #parsed = CSV.parse(data).to_json   
-          ports = Port.new(ports_params)
-          ports.save
-          render json: { status: 'SUCCESS', message: 'Saved csv', data: ports }, status: :ok
+      # ports = Port.new(ports_params)
+      # if ports.save
+      #   render json: { status: 'SUCCESS', message: 'Saved csv', data: ports }, status: :ok
+      # else
+      #   render json: @port.errors, status: :unprocessable_entity
+      # end
+        file = ports_params[:port].tempfile.path
+        CSV.foreach(file) do |row|
+         id, name, code, city, ocean_insights_code, latitude, longitude, bigschedules, created_at, updated_at, port_type, hub_port, ocean_insights = row    
+         @ports = Port.create(name: name,
+          code: code,
+          city: city,
+          oceaninsightscode: ocean_insights_code,
+          latitude: latitude,
+          longitude: longitude,
+          bigschedules: bigschedules,
+          createdat: created_at,
+          updatedat: updated_at,
+          porttype: port_type,
+          hubport: hub_port,
+          oceaninsights: ocean_insights)
+         
+        end
+      render json: { status: 'SUCCESS', message: 'Saved csv', data: @ports  }, status: :ok
       end
 
       def destroy
@@ -43,7 +62,9 @@ module Api
                       :updatedat,
                       :porttype,
                       :hubport,
-                      :oceaninsights)
+                      :oceaninsights,
+                      :port,
+                      )
       end
     end
   end
