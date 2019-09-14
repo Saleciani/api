@@ -19,11 +19,11 @@ Port.create(
   oceaninsights: 'koko'
 )
 Port.create(
-  nr: 11,
-  name: 'port2',
-  code: 'CBL',
+  nr: 4746,
+  name: 'Aeropuerto General Tomas de Heres Ciudad Bolivar',
+  code: 'CssBL',
   city: '17',
-  oceaninsightscode: 'hey',
+  oceaninsightscode: 'ziziziiz',
   latitude: 8.12216091156,
   longitude: -63.5369567871,
   bigschedules: 'ka',
@@ -33,4 +33,3 @@ Port.create(
   hubport: false,
   oceaninsights: 'koko'
 )
-

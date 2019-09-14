@@ -10,8 +10,8 @@ module Api
       end
 
       def show
-        ports = Port.find(params[:id])
-        render json: { status: 'SUCCESS', message: 'Loaded Portfound', data: ports }, status: :ok
+        ports = Port.where("name LIKE ?","code LIKE ?","city LIKE ?","oceaninsightscode LIKE ?","%", params[:q]+"%")
+        render json: { status: 'SUCCESS', message: 'Your result', data: ports }, status: :ok
       end
 
       def create
