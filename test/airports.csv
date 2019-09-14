@@ -1,0 +1,4 @@
+Id,Name,Code,City,Oceans insights code,Latitude,Longitude,Bigschedules,Created at,Updated at,Port type,Hub port,Ocean insights
+4746,Aeropuerto \General Tomas de Heres\. Ciudad Bolivar,CBL,,,8.12216091156,-63.5369567871,,2017-12-31 14:34:09 +0100,2017-12-31 14:34:09 +0100,airport,false,
+3784,Aix-en-Provence (BA 114) Airport,QXB,,,43.5056,5.36778,,2017-12-31 14:33:52 +0100,2017-12-31 14:33:52 +0100,airport,false,
+5914,Aklavik/Freddie Carmichael Airport,LAK,,,68.223297,-135.00599,,2017-12-31 14:34:29 +0100,2017-12-31 14:34:29 +0100,airport,false,
