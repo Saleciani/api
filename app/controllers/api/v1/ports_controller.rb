@@ -1,5 +1,3 @@
-require 'csv'
-require 'json'
 module Api
   module V1
     class PortsController < ApplicationController
@@ -13,6 +11,10 @@ module Api
         render json: { status: 'SUCCESS', message: 'Loaded Portfound', data: ports }, status: :ok
       end
 
+      def import
+        Port.import(params[:file])
+      end
+      
       def create
           #data = File.open("http://localhost:3000/api/v1/ports").read
           #parsed = CSV.parse(data).to_json   
