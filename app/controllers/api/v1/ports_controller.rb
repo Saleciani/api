@@ -6,7 +6,9 @@ module Api
       require 'csv'
       def index
         ports = Port.where(name: "#{params[:name]}").or(Port.where(code: "#{params[:code]}").or(Port.where(city: "#{params[:city]}").or(Port.where(oceaninsightscode: "#{params[:oceaninsightscode]}").or(Port.where(latitude:"#{params[:latitude]}").or(Port.where(longitude: "#{params[:longitude]}").or(Port.where(bigschedules: "#{params[:bigschedules]}").or(Port.where(createdat: "#{params[:createdat]}").or(Port.where(updatedat: "#{params[:updatedat]}").or(Port.where(porttype: "#{params[:porttype]}").or(Port.where(hubport: "#{params[:hubport]}").or(Port.where(oceaninsights: "#{params[:oceaninsights]}"))))))))))))
-        #ports = Port.all
+        if ports == []
+          ports = Port.all
+        end
         render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
      end
 
