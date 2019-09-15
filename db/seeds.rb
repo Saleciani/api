@@ -1,6 +1,17 @@
 puts "Wiping DB clean..."
 
 Port.delete_all
+Admin.delete_all
+
+
+Admin.create(
+  username:"JoaoLobo",
+  password:"12345"
+)
+Admin.create(
+  username:"SHYPPLE",
+  password:"12345"
+)
 
 # frozen_string_literal: true
 Port.create(
