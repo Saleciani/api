@@ -3,7 +3,7 @@
 ## Exercise description
 
 The task is to build a simple **Rails API** project. Its functionality is as follows:
-* For authorized users, there must be an import functionality of **ports**. The expected file format is CSV. Some examples are located in the `/samples` folder. - YES/NO
+* For authorized users, there must be an import functionality of **ports**. The expected file format is CSV. Some examples are located in the `/samples` folder. - YES
 * The API should provide an ability to search through ports in a various ways (e.g. port name entries, port type, etc.). - OK
 * Documentation and code specs are expected to be present. - NO
 
@@ -12,7 +12,7 @@ The task is to build a simple **Rails API** project. Its functionality is as fol
 * The ID field should be omitted from the import files. - YES
 * Any imported files should not be stored after processing. - YES
 * Some attributes of ports aren't important for the task (e.g. city). However, everything should be stored in database. - YES
-* The authentication method is up to you, feel free to use anything that seems appropriate and safe. -NO
+* The authentication method is up to you, feel free to use anything that seems appropriate and safe. -yes
 
 ## Technical details
 * Ruby/Rails: latest (stable) version (at the moment of starting this exercise).
