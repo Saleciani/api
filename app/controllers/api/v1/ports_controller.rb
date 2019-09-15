@@ -5,15 +5,15 @@ module Api
     class PortsController < ApplicationController
       require 'csv'
       def index
-        ports = Port.all
+        # sql_query = "name LIKE :query OR code LIKE :query  OR city LIKE :query  OR oceaninsightscode LIKE :query  OR latitude LIKE :query  OR longitude LIKE :query  OR bigschedules LIKE :query  OR createdat LIKE :query  OR updatedat LIKE :query  OR porttype LIKE :query  OR hubport LIKE :query  OR oceaninsights LIKE :query"
+        #ports = Port.search_the_ports(params[:name, :code])
+         ports = Port.where.any_of(name: "#{params[:name]}", code:"#{params[:code]}")
+         #ports = Port.all
         render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
-      end
+     end
 
       def show
-        #sql_query = "name ILIKE :query OR code ILIKE :query  OR city ILIKE :query  OR oceaninsightscode ILIKE :query  OR latitude ILIKE :query  OR longitude ILIKE :query  OR bigschedules ILIKE :query  OR createdat ILIKE :query  OR updatedat ILIKE :query  OR porttype ILIKE :query  OR hubport ILIKE :query  OR oceaninsights ILIKE :query"
-        #ports = Port.where(sql_query, query: "%#{params[:q]}%")
         ports = Port.find(params[:id])
-        #ports = Port.search_the_ports("%#{params[:q]}%")
         render json: { status: 'SUCCESS', message: 'Your result', data: ports }, status: :ok
       end
 

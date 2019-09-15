@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :ports
+      end
     end
   end
-end
