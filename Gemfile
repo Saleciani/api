@@ -15,7 +15,7 @@ gem 'puma', '~> 3.11'
 # Use Redis adapter to run Action Cable in production
  gem 'redis', '~> 4.0'
  gem 'pg_search', '~> 2.3.0'
- 
+ gem 'activerecord'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
