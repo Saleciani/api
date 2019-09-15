@@ -5,10 +5,8 @@ module Api
     class PortsController < ApplicationController
       require 'csv'
       def index
-        # sql_query = "name LIKE :query OR code LIKE :query  OR city LIKE :query  OR oceaninsightscode LIKE :query  OR latitude LIKE :query  OR longitude LIKE :query  OR bigschedules LIKE :query  OR createdat LIKE :query  OR updatedat LIKE :query  OR porttype LIKE :query  OR hubport LIKE :query  OR oceaninsights LIKE :query"
-        #ports = Port.search_the_ports(params[:name, :code])
-         ports = Port.where.any_of(name: "#{params[:name]}", code:"#{params[:code]}")
-         #ports = Port.all
+        ports = Port.where(name: "#{params[:name]}").or(Port.where(code: "#{params[:code]}").or(Port.where(city: "#{params[:city]}").or(Port.where(oceaninsightscode: "#{params[:oceaninsightscode]}").or(Port.where(latitude:"#{params[:latitude]}").or(Port.where(longitude: "#{params[:longitude]}").or(Port.where(bigschedules: "#{params[:bigschedules]}").or(Port.where(createdat: "#{params[:createdat]}").or(Port.where(updatedat: "#{params[:updatedat]}").or(Port.where(porttype: "#{params[:porttype]}").or(Port.where(hubport: "#{params[:hubport]}").or(Port.where(oceaninsights: "#{params[:oceaninsights]}"))))))))))))
+        #ports = Port.all
         render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
      end
 
