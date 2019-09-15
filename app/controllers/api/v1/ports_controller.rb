@@ -4,13 +4,16 @@ module Api
   module V1
     class PortsController < ApplicationController
       require 'csv'
+
       def index
-        ports = Port.where(name: "#{params[:name]}").or(Port.where(code: "#{params[:code]}").or(Port.where(city: "#{params[:city]}").or(Port.where(oceaninsightscode: "#{params[:oceaninsightscode]}").or(Port.where(latitude:"#{params[:latitude]}").or(Port.where(longitude: "#{params[:longitude]}").or(Port.where(bigschedules: "#{params[:bigschedules]}").or(Port.where(createdat: "#{params[:createdat]}").or(Port.where(updatedat: "#{params[:updatedat]}").or(Port.where(porttype: "#{params[:porttype]}").or(Port.where(hubport: "#{params[:hubport]}").or(Port.where(oceaninsights: "#{params[:oceaninsights]}"))))))))))))
+        ports = Port.where(name: params[:name].to_s).or(Port.where(code: params[:code].to_s).or(Port.where(city: params[:city].to_s).or(Port.where(oceaninsightscode: params[:oceaninsightscode].to_s).or(Port.where(latitude: params[:latitude].to_s).or(Port.where(longitude: params[:longitude].to_s).or(Port.where(bigschedules: params[:bigschedules].to_s).or(Port.where(createdat: params[:createdat].to_s).or(Port.where(updatedat: params[:updatedat].to_s).or(Port.where(porttype: params[:porttype].to_s).or(Port.where(hubport: params[:hubport].to_s).or(Port.where(oceaninsights: params[:oceaninsights].to_s))))))))))))
         if ports == []
           ports = Port.all
+          render json: { status: 'SUCCESS', message: 'No port query detected, or no ports matching your query were found. Displaying all ports in the database', data: ports }, status: :ok
+        else
+          render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
         end
-        render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
-     end
+      end
 
       def show
         ports = Port.find(params[:id])
