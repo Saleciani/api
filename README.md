@@ -4,7 +4,7 @@
 
 The task is to build a simple **Rails API** project. Its functionality is as follows:
 * For authorized users, there must be an import functionality of **ports**. The expected file format is CSV. Some examples are located in the `/samples` folder. - YES/NO
-* The API should provide an ability to search through ports in a various ways (e.g. port name entries, port type, etc.). - NO
+* The API should provide an ability to search through ports in a various ways (e.g. port name entries, port type, etc.). - OK
 * Documentation and code specs are expected to be present. - NO
 
 ## Notes
