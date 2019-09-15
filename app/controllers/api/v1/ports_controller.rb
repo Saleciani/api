@@ -10,7 +10,10 @@ module Api
       end
 
       def show
-        ports = Port.where("name LIKE ?","code LIKE ?","city LIKE ?","oceaninsightscode LIKE ?","%", params[:q]+"%")
+        #sql_query = "name ILIKE :query OR code ILIKE :query  OR city ILIKE :query  OR oceaninsightscode ILIKE :query  OR latitude ILIKE :query  OR longitude ILIKE :query  OR bigschedules ILIKE :query  OR createdat ILIKE :query  OR updatedat ILIKE :query  OR porttype ILIKE :query  OR hubport ILIKE :query  OR oceaninsights ILIKE :query"
+        #ports = Port.where(sql_query, query: "%#{params[:q]}%")
+        #ports = Port.where("name ILIKE ? OR code ILIKE ?","%", params[:q]+"%")
+        ports = Port.search_the_ports("%#{params[:q]}%")
         render json: { status: 'SUCCESS', message: 'Your result', data: ports }, status: :ok
       end
 
