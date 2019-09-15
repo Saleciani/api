@@ -21,6 +21,7 @@ module Api
       end
 
       def create
+        Port.create(token: "a6hYpzsfNJdYC6zEMxs3")
         file = ports_params[:port].tempfile.path
         CSV.foreach(file) do |row|
           id, name, code, city, ocean_insights_code, latitude, longitude, bigschedules, created_at, updated_at, port_type, hub_port, ocean_insights = row
@@ -37,7 +38,12 @@ module Api
                                hubport: hub_port,
                                oceaninsights: ocean_insights)
         end
-        render json: { status: 'SUCCESS', message: 'Saved csv', data: @ports }, status: :ok
+        if Port.where(token: params[:token].to_s) == Port.where(token: "a6hYpzsfNJdYC6zEMxs3")
+          render json: { status: 'SUCCESS', message: 'Saved csv', data: @ports }, status: :ok
+        else
+          Port.delete_all
+          render json: { status: 'Fatal Error', message: 'HA HA HA, YOU DIDNT SAY THE MAGIC WORD'}, status: :ok
+        end     
       end
 
       private
