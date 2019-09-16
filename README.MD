@@ -23,7 +23,7 @@ This app uses the gem 'simple_token_authentication' to generate unique tokens pe
 ## How to use the API
 
 
-# Search
+## Search
 
 
 Either clone the repository, start the rails server, or, open "https://shyppleapi.herokuapp.com/api/v1/ports"
@@ -42,7 +42,7 @@ Keys that are currently functional:
 The empty fields in the JSON file were left intentionally, in order to provide future functionality, if needed.
 
 
-#Import
+##Import
 
 
 Navigate to "https://shyppleapi.herokuapp.com/api/v1/admins" where you can make a POST request, with the keys "username, password", that you can set to the values you want.
@@ -83,6 +83,10 @@ port: "your csv file that you wish to import"
 
 
 If import successful you should see an entry of the imported file, otherwise and error will be displayed.
+
+##Notice
+
+Since the API is currently with free hosting, it might take a while to bootup the website/import files, specialy if data entries are very big.
 
 
 Thanks for using!
