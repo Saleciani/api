@@ -43,13 +43,4 @@ ActiveRecord::Schema.define(version: 2019_09_15_185434) do
     t.string "port"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "authentication_token", limit: 30
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-  end
-
 end
